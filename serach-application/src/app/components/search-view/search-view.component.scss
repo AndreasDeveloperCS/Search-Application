@@ -1,0 +1,48 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 2em;
+  width: 100%;
+}
+
+td, th {
+  width: 15%;
+  border-style: double;
+  border-color: brown;
+}
+
+th {
+  background-color: lightsalmon;
+}
+
+.narrow-column {
+  width: 6%;
+}
+
+.middle-column {
+  width: 18%;
+}
+
+.wide-column {
+  width: 27%;
+}
+
+.align-paginator {
+  align-self: stretch;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-paginator {
+  display: flex;
+  justify-content: left;
+}
+
+.mat-row {
+  overflow: scroll;
+}

@@ -1,0 +1,45 @@
+.center-search {
+  grid-area: top;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 5%;
+  vertical-align: text-top;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.center-view {
+  grid-area: bottom;
+  display: inline-block;
+  margin-top: 5%;
+  overflow-y: auto;
+}
+
+.center-general {
+  display: inline-block;
+  height: 95%;
+  width: 95%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'top top top top top top'
+    'bottom bottom bottom bottom bottom bottom'
+    'bottom bottom bottom bottom bottom bottom'
+    'bottom bottom bottom bottom bottom bottom'
+    'bottom bottom bottom bottom bottom bottom';
+  gap: 1%;
+  background-color: wheat;
+  padding: 1%;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 1% 0;
+}

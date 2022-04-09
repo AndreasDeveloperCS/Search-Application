@@ -1,0 +1,63 @@
+<div *ngIf="isNotEmpty">
+
+  <mat-form-field appearance="standard">
+    <input matInput (keyup)="applyFilter($event)" #input placeholder="Filter">
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+
+    <mat-table [dataSource]="dataSource" matSort cdkDropList (cdkDropListDropped)="drop($event)" >
+
+      <ng-container matColumnDef="country" class="middle-column" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header cdkDrag cdkDrop >Country</th>
+        <td mat-cell *matCellDef="let row" cdkDrag cdkDrop> {{row.country}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name" class="wide-column" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header cdkDrag cdkDrop>University Name</th>
+        <td class="wide-column" mat-cell *matCellDef="let row" cdkDrag cdkDrop> {{row.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="alpha_two_code" class="narrow-column">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header cdkDrag cdkDrop >Country Code</th>
+        <td class="narrow-column" mat-cell *matCellDef="let row" cdkDrag cdkDrop> {{ row.alpha_two_code }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="web_pages" class="middle-column" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header cdkDrag cdkDrop >Web Pages</th>
+        <td class="middle-column" mat-cell *matCellDef="let row" cdkDrag cdkDrop>
+          <div *ngFor="let item of row.web_pages">
+            {{ item }}
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="domains" class="middle-column" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header cdkDrag cdkDrop>Domain</th>
+        <td class="middle-column" mat-cell *matCellDef="let row" cdkDrag cdkDrop>
+          <div *ngFor="let item of row.domains">
+            {{ item }}
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="state_province" class="narrow-column"  >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header cdkDrag cdkDrop>State Province</th>
+        <td  class="narrow-column" mat-cell *matCellDef="let row" cdkDrag cdkDrop> {{row.state_province}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="6">No data matching the filter "{{ input.value}}"</td>
+      </tr>
+    </mat-table>
+
+    <mat-paginator [pageSize]="10"
+                   [showFirstLastButtons]="true"
+                   [pageSizeOptions]="[5, 10, 15, 20, 25]"
+                   aria-label="Select page of users">
+    </mat-paginator>
+  </div>
+</div>

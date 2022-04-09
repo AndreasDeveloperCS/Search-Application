@@ -1,0 +1,33 @@
+
+<div class="input-group">
+    <input class="form-control py-2 border search-button rounded-start"
+    (keyup)="valuechange($event)"
+    [value]="searchValue"
+    type="search" placeholder="Search">
+
+    <button class="btn btn-secondary" type="button"
+            (click)="searchUniversities()">
+      <i class="fa fa-search"></i>
+    </button>
+
+    <div class="notification" *ngIf="isEmptyList" >
+      {{ 'Looks like this country does not exist in the source list.' }}
+    </div>
+
+    <div>
+
+      <cdk-virtual-scroll-viewport itemSize="20" class="suggesting-viewport" *ngIf="areTipsDisplayed">
+
+          <div *cdkVirtualFor="let item of countriesCollection"
+                class="suggesting-item"
+                (click)="valueSelected($event)">
+                <button class="tip-button" (click)="valueSelected($event)">
+                    {{ item || 'Loading...' }}
+                </button>
+          </div>
+
+      </cdk-virtual-scroll-viewport>
+
+    </div>
+</div>
+
