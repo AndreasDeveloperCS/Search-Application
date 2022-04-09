@@ -38,12 +38,10 @@ export class SearchControlComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     this.subscriptionCountry = this.searcher.countries.subscribe((countries) => {
-      console.log(countries);
       this.countriesCollection = countries;
     });
     this.subscriptionSearchCountryValidation = this.searcher.validatedCountry.subscribe((quantity) => {
       this.isEmptyList = quantity === 0;
-      console.log('this.isEmptyList', this.isEmptyList);
     });
 
   }
